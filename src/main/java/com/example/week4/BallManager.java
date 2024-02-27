@@ -33,7 +33,12 @@ public class BallManager implements Runnable{
             if (ball.getPosY() >= game.getDimensionY() - ball.getRadius() || ball.getPosY() <= ball.getRadius()){
                 ball.bounceTopOrBottom();
             }
+            //player1 racket bouncing
             if ((game.getPlayer1().getRacket().getPosX()+game.getPlayer1().getRacket().getThickness() >= ball.getPosX())&&game.getPlayer1().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer1().getRacket().getPosY()+game.getPlayer1().getRacket().getSize()){
+                ball.bounceX();
+            }
+            //player 2 racket bouncing not working yet
+            if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX())&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
                 ball.bounceX();
             }
 // CODE to CHECK BOUNCING WITH RACKET
