@@ -22,14 +22,19 @@ public class BallManager implements Runnable{
             ball.move();
             if (ball.getPosX()<5)
             {
+//                ball.bounceX();
 //player 2 has scored, add code here
             }
             if (ball.getPosX()>game.getDimensionX()-ball.getRadius())
             {
+                ball.bounceX();
 //player 1 has scored, add code here
             }
-            if (ball.getPosY() == game.getDimensionY() - ball.getRadius() || ball.getPosY() == ball.getRadius()){
+            if (ball.getPosY() >= game.getDimensionY() - ball.getRadius() || ball.getPosY() <= ball.getRadius()){
                 ball.bounceTopOrBottom();
+            }
+            if ((game.getPlayer1().getRacket().getPosX()+game.getPlayer1().getRacket().getThickness() >= ball.getPosX())&&game.getPlayer1().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer1().getRacket().getPosY()+game.getPlayer1().getRacket().getSize()){
+                ball.bounceX();
             }
 // CODE to CHECK BOUNCING WITH RACKET
             canvas.drawGame(game);

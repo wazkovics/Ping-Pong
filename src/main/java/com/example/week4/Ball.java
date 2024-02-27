@@ -79,4 +79,8 @@ public class Ball implements Resizable{
     public void bounceTopOrBottom(){
         speedY = speedY*-1;
     }
+
+    public void bounceX(){
+        speedX = speedX*-1;
+    }
 }
