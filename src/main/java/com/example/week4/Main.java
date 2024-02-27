@@ -24,8 +24,10 @@ public class Main extends Application {
 
         MenuListener menuListener = new MenuListener(labController.getGame(),labController,canvas,namesandscr);
 
-
-
+        BallManager ballManager= new BallManager(labController.getGame(), canvas);
+        Thread thread = new Thread(ballManager);
+        thread.start();
+        Thread.yield();
 
         GameMenu menu = new GameMenu(menuListener);
 

@@ -17,10 +17,10 @@ public class Ball implements Resizable{
     private double radius;
 
 
-
-
-
     private int speed = 2;
+
+    private int speedX = 1;
+    private int speedY = 1;
 
     public Ball() {
         posX = 250;
@@ -71,4 +71,12 @@ public class Ball implements Resizable{
     }
 
 
+    public void move() {
+        posY += speedY;
+        posX += speedX;
+    }
+
+    public void bounceTopOrBottom(){
+        speedY = speedY*-1;
+    }
 }
