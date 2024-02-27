@@ -87,4 +87,12 @@ public class Racket implements Resizable{
         this.posY=this.posY*factor;
         this.size = this.size*factor;
     }
+
+    public void moveUp() {
+        this.posY -= 10;
+    }
+
+    public void moveDown() {
+        this.posY += 10;
+    }
 }

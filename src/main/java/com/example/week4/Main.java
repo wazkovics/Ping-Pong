@@ -11,27 +11,37 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 
-    private final LabCanvas canvas = new LabCanvas(600,450);
+    private LabCanvas canvas;
 
     private final LabController labController = new LabController();
     @Override
     public void start(Stage primaryStage) {
 
         BorderPane top = new BorderPane();
+        canvas = new LabCanvas(600,450);
 
         Nameandscores namesandscr = new Nameandscores();
 
         MenuListener menuListener = new MenuListener(labController.getGame(),labController,canvas,namesandscr);
 
+
+
+
         GameMenu menu = new GameMenu(menuListener);
 
-
+        // FIX THIS SO I GET PLAYER NAMES
         VBox menuandplayers = new VBox(menu.menubar,namesandscr.scoresandnames);
 
-        top.setTop(menuandplayers);
+        top.setTop(menu.menubar);
         top.setCenter(canvas);
 
         canvas.drawGame(labController.getGame());
+
+        KeyboardListener keyboardListener = new KeyboardListener( labController.getGame(), canvas);
+        canvas.setOnKeyPressed(keyboardListener);
+        canvas.setOnKeyTyped(keyboardListener);
+        canvas.setFocusTraversable(true);
+        //canvas = new LabCanvas(600,450);
 
 
         Scene screen = new Scene(top);
