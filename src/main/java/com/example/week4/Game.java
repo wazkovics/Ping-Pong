@@ -16,7 +16,6 @@ public class Game implements Resizable {
     private Ball ball;
 
 
-
     private int gameendingscr;
 
 

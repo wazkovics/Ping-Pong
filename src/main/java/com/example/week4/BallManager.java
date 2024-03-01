@@ -23,11 +23,17 @@ public class BallManager implements Runnable{
             if (ball.getPosX()<5)
             {
 
+                game.getPlayer2().incrementScore();
+                ball.resetBall();
+                canvas.drawGame(game);
 //player 2 has scored, add code here
             }
             if (ball.getPosX()>game.getDimensionX()-ball.getRadius())
             {
-                ball.bounceX();
+
+                game.getPlayer1().incrementScore();
+                ball.resetBall();
+                canvas.drawGame(game);
 //player 1 has scored, add code here
             }
             if (ball.getPosY() >= game.getDimensionY() - ball.getRadius() || ball.getPosY() <= ball.getRadius()){

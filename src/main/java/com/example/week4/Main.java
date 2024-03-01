@@ -20,8 +20,6 @@ public class Main extends Application {
         BorderPane top = new BorderPane();
         canvas = new LabCanvas(600,450);
 
-        Nameandscores namesandscr = new Nameandscores(labController.getGame());
-
         MenuListener menuListener = new MenuListener(labController.getGame(),labController,canvas);
 
         BallManager ballManager= new BallManager(labController.getGame(), canvas);

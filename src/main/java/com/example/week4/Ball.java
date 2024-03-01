@@ -83,4 +83,9 @@ public class Ball implements Resizable{
     public void bounceX(){
         speedX = speedX*-1;
     }
+
+    public void resetBall(){
+        posX = 250;
+        posY = 120;
+    }
 }

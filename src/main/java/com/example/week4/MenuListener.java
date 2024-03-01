@@ -18,7 +18,6 @@ public class MenuListener {
 
     private GameMenu menu;
 
-    private Nameandscores nameandscores;
     public MenuListener(Game game,LabController controller, LabCanvas labCanvas)
     {
         this.game=game;
