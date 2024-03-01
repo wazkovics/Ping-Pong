@@ -22,7 +22,7 @@ public class BallManager implements Runnable{
             ball.move();
             if (ball.getPosX()<5)
             {
-//                ball.bounceX();
+
 //player 2 has scored, add code here
             }
             if (ball.getPosX()>game.getDimensionX()-ball.getRadius())
@@ -38,7 +38,7 @@ public class BallManager implements Runnable{
                 ball.bounceX();
             }
             //player 2 racket bouncing not working yet
-            if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX())&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
+            if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX()+ ball.getRadius()/2)&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
                 ball.bounceX();
             }
 // CODE to CHECK BOUNCING WITH RACKET
