@@ -13,6 +13,8 @@ public class GameMenu {
     private MenuItem filemenuitem2 = new MenuItem("Exit");
     private Menu settings = new Menu("Settings");
 
+//    private MenuItem resetball = new MenuItem("Reset Ball");
+
     private MenuItem allsettings = new MenuItem("Open Settings");
     private Menu help = new Menu("Help");
     private Menu about = new Menu("About");
@@ -24,9 +26,8 @@ public class GameMenu {
         this.menuListener = listener;
 
         file.getItems().addAll(filemenuitem1,filemenuitem2);
-        settings.getItems().add(allsettings);
+        settings.getItems().addAll(allsettings);
         menubar.getMenus().addAll(file,settings,help,about);
-
         handleClicking();
 
     }
@@ -35,6 +36,7 @@ public class GameMenu {
         filemenuitem2.setOnAction(e->menuListener.setExit());
         about.setOnAction(e->menuListener.setAbout());
         allsettings.setOnAction(e->menuListener.setAllSettings());
+//        resetball.setOnAction(e -> menuListener.resetBall());
     }
 
 

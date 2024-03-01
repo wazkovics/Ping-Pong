@@ -109,6 +109,8 @@ public class Game implements Resizable {
         player1.getRacket().resizeX(factor);
         player2.getRacket().resizeX(factor);
         ball.resizeX(factor);
+        player1.resizeX(factor);
+        player2.resizeX(factor);
     }
 
     @Override
@@ -116,5 +118,7 @@ public class Game implements Resizable {
         player1.getRacket().resizeY(factor);
         player2.getRacket().resizeY(factor);
         ball.resizeY(factor);
+        player1.resizeY(factor);
+        player2.resizeY(factor);
     }
 }

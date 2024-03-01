@@ -20,9 +20,9 @@ public class Main extends Application {
         BorderPane top = new BorderPane();
         canvas = new LabCanvas(600,450);
 
-        Nameandscores namesandscr = new Nameandscores();
+        Nameandscores namesandscr = new Nameandscores(labController.getGame());
 
-        MenuListener menuListener = new MenuListener(labController.getGame(),labController,canvas,namesandscr);
+        MenuListener menuListener = new MenuListener(labController.getGame(),labController,canvas);
 
         BallManager ballManager= new BallManager(labController.getGame(), canvas);
         Thread thread = new Thread(ballManager);
@@ -32,7 +32,7 @@ public class Main extends Application {
         GameMenu menu = new GameMenu(menuListener);
 
         // FIX THIS SO I GET PLAYER NAMES
-        VBox menuandplayers = new VBox(menu.menubar,namesandscr.scoresandnames);
+//        VBox menuandplayers = new VBox(menu.menubar,namesandscr.scoresandnames);
 
         top.setTop(menu.menubar);
         top.setCenter(canvas);

@@ -17,19 +17,31 @@ public class KeyboardListener implements EventHandler<KeyEvent> {
         KeyCode key=keyEvent.getCode();
         if (KeyCode.UP.equals(key))
         {
-            game.getPlayer2().getRacket().moveUp();
+            if(game.getPlayer2().getRacket().getPosY()>0){
+                game.getPlayer2().getRacket().moveUp();
+            }
+
         }
         if (KeyCode.DOWN.equals(key))
         {
-            game.getPlayer2().getRacket().moveDown();
+            if (game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()< game.getDimensionY()){
+                game.getPlayer2().getRacket().moveDown();
+            }
+
         }
         if (KeyCode.W.equals(key))
         {
-            game.getPlayer1().getRacket().moveUp();
+            if (game.getPlayer1().getRacket().getPosY()>0){
+                game.getPlayer1().getRacket().moveUp();
+            }
+
         }
         if (KeyCode.S.equals(key))
         {
-            game.getPlayer1().getRacket().moveDown();
+            if (game.getPlayer1().getRacket().getPosY()+game.getPlayer1().getRacket().getSize()< game.getDimensionY()){
+                game.getPlayer1().getRacket().moveDown();
+            }
+
         }
         canvas.drawGame(game);
     }

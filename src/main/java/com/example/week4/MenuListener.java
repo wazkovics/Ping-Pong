@@ -19,12 +19,11 @@ public class MenuListener {
     private GameMenu menu;
 
     private Nameandscores nameandscores;
-    public MenuListener(Game game,LabController controller, LabCanvas labCanvas, Nameandscores nmsandscr)
+    public MenuListener(Game game,LabController controller, LabCanvas labCanvas)
     {
         this.game=game;
         this.labController = controller;
         this.canvas = labCanvas;
-        this.nameandscores = nmsandscr;
     }
     public void setExit() {
         System.out.println("EXIT");
@@ -39,6 +38,11 @@ public class MenuListener {
         alert.showAndWait().ifPresent((btnType) -> {
         });
     }
+
+//    public void resetBall(){
+//        canvas.drawGame(labController.getGame());
+//        System.out.println("Reset");
+//    }
 
     public void setAllSettings(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -168,14 +172,15 @@ public class MenuListener {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                labController.getGame().getPlayer1().setName(String.valueOf(player1name));
-                labController.getGame().getPlayer1().setName(String.valueOf(player2name));
+                labController.getGame().getPlayer1().setName(String.valueOf(player1name.getText()));
+                System.out.println(player1name.getText());
+                labController.getGame().getPlayer2().setName(String.valueOf(player2name.getText()));
                 labController.getGame().getPlayer1().getRacket().setSize(paddlelength.getValue());
                 labController.getGame().getPlayer2().getRacket().setSize(paddlelength.getValue());
                 labController.getGame().getPlayer1().getRacket().setThickness(paddlewidth.getValue());
                 labController.getGame().getPlayer2().getRacket().setThickness(paddlewidth.getValue());
-                nameandscores.setPlayer1name(player1name.getText());
-                nameandscores.setPlayer2name(player2name.getText());
+//                nameandscores.setPlayer1name(player1name.getText());
+//                nameandscores.setPlayer2name(player2name.getText());
                 canvas.drawGame(labController.getGame());
 
             }
