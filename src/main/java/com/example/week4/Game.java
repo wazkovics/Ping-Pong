@@ -63,6 +63,7 @@ public class Game implements Resizable {
 
 
 
+
     //Setters
     public void setPlayer1(Player player1) {
         this.player1 = player1;
@@ -100,6 +101,7 @@ public class Game implements Resizable {
     public void setGamedifficultyDown() {
         this.gamedifficulty--;
     }
+
 
 
 

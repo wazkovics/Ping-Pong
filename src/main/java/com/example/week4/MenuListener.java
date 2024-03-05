@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Window;
 
 import java.util.Optional;
 
@@ -44,6 +45,9 @@ public class MenuListener {
 //    }
 
     public void setAllSettings(){
+        int ballspeedX = game.getBall().getSpeedX();
+        int ballspeedY = game.getBall().getSpeedY();
+        game.getBall().setSpeedStop();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Settings");
         alert.setHeaderText("Game settings");
@@ -171,6 +175,7 @@ public class MenuListener {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
+                game.getBall().setSpeedStart(ballspeedX,ballspeedY);
                 labController.getGame().getPlayer1().setName(String.valueOf(player1name.getText()));
                 System.out.println(player1name.getText());
                 labController.getGame().getPlayer2().setName(String.valueOf(player2name.getText()));

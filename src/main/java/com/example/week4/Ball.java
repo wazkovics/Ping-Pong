@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 
 public class Ball implements Resizable{
 
@@ -68,6 +69,22 @@ public class Ball implements Resizable{
 
     public void setSpeedDown() {
         this.speed--;
+    }
+
+    public void setSpeedStop(){
+        this.speedX = 0;
+        this.speedY = 0;
+    }
+    public int getSpeedX(){
+        return speedX;
+    }
+    public int getSpeedY(){
+        return speedY;
+    }
+
+    public void setSpeedStart(int speedx,int speedy){
+        this.speedX  = speedx;
+        this.speedY = speedy;
     }
 
 

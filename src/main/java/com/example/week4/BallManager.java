@@ -49,6 +49,15 @@ public class BallManager implements Runnable{
             }
 // CODE to CHECK BOUNCING WITH RACKET
             canvas.drawGame(game);
+
+            if (game.getGameendingscr() == game.getPlayer1().getScore()){
+                System.out.println(game.getPlayer1().getName()+ " has won");
+                break;
+            }
+            if (game.getGameendingscr() == game.getPlayer2().getScore()){
+                System.out.println(game.getPlayer2().getName()+ " has won");
+                break;
+            }
         }
     }
 }

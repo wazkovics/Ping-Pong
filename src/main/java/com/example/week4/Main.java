@@ -3,7 +3,6 @@ package com.example.week4;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -28,9 +27,6 @@ public class Main extends Application {
         Thread.yield();
 
         GameMenu menu = new GameMenu(menuListener);
-
-        // FIX THIS SO I GET PLAYER NAMES
-//        VBox menuandplayers = new VBox(menu.menubar,namesandscr.scoresandnames);
 
         top.setTop(menu.menubar);
         top.setCenter(canvas);
