@@ -18,7 +18,7 @@ public class Ball implements Resizable{
     private double radius;
 
 
-    private int speed = 2;
+    private int speed = 1;
 
     private int speedX = 1;
     private int speedY = 1;
@@ -64,11 +64,20 @@ public class Ball implements Resizable{
     }
 
     public void setSpeedup() {
-        this.speed++;
+        if(speed <5){
+            this.speed++;
+        }
     }
 
     public void setSpeedDown() {
-        this.speed--;
+        if (speed>1){
+            this.speed--;
+        }
+    }
+
+    public void StartSpeed(){
+        this.speedX = speed;
+        this.speedY = speed;
     }
 
     public void setSpeedStop(){

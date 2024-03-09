@@ -33,6 +33,7 @@ public class GameMenu {
     }
 
     private void handleClicking(){
+        filemenuitem1.setOnAction(e->menuListener.newGame());
         filemenuitem2.setOnAction(e->menuListener.setExit());
         about.setOnAction(e->menuListener.setAbout());
         allsettings.setOnAction(e->menuListener.setAllSettings());

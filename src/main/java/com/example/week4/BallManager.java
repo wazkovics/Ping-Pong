@@ -11,6 +11,7 @@ public class BallManager implements Runnable{
     public void run() {
         Ball ball = game.getBall();
         int counter=0;
+        boolean gameend = false;
         while(true)
         {
             counter++;
@@ -20,9 +21,15 @@ public class BallManager implements Runnable{
                 throw new RuntimeException(e);
             }
             ball.move();
+            if(ball.getSpeedX() != 0){
+                gameend = false;
+            }
             if (ball.getPosX()<5)
             {
-
+                if (game.getGamedifficulty()>1){
+                    ball.setSpeedup();
+                    ball.StartSpeed();
+                }
                 game.getPlayer2().incrementScore();
                 ball.resetBall();
                 canvas.drawGame(game);
@@ -30,7 +37,10 @@ public class BallManager implements Runnable{
             }
             if (ball.getPosX()>game.getDimensionX()-ball.getRadius())
             {
-
+                if (game.getGamedifficulty()>1){
+                    ball.setSpeedup();
+                    ball.StartSpeed();
+                }
                 game.getPlayer1().incrementScore();
                 ball.resetBall();
                 canvas.drawGame(game);
@@ -47,17 +57,21 @@ public class BallManager implements Runnable{
             if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX()+ ball.getRadius()/2)&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
                 ball.bounceX();
             }
+            if (game.getGameendingscr() == game.getPlayer1().getScore() && !gameend){
+                System.out.println(game.getPlayer1().getName()+ " has won");
+                game.getBall().setSpeedStop();
+                gameend = true;
+            }
+            if (game.getGameendingscr() == game.getPlayer2().getScore() && !gameend){
+                System.out.println(game.getPlayer2().getName()+ " has won");
+                game.getBall().setSpeedStop();
+                gameend = true;
+            }
 // CODE to CHECK BOUNCING WITH RACKET
             canvas.drawGame(game);
 
-            if (game.getGameendingscr() == game.getPlayer1().getScore()){
-                System.out.println(game.getPlayer1().getName()+ " has won");
-                break;
-            }
-            if (game.getGameendingscr() == game.getPlayer2().getScore()){
-                System.out.println(game.getPlayer2().getName()+ " has won");
-                break;
-            }
+
+
         }
     }
 }

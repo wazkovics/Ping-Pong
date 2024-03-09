@@ -39,14 +39,19 @@ public class MenuListener {
         });
     }
 
+    public void newGame(){
+        game.getBall().resetBall();
+        game.getBall().StartSpeed();
+        game.getPlayer1().resetScore();
+        game.getPlayer2().resetScore();
+    }
+
 //    public void resetBall(){
 //        canvas.drawGame(labController.getGame());
 //        System.out.println("Reset");
 //    }
 
     public void setAllSettings(){
-        int ballspeedX = game.getBall().getSpeedX();
-        int ballspeedY = game.getBall().getSpeedY();
         game.getBall().setSpeedStop();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Settings");
@@ -175,7 +180,7 @@ public class MenuListener {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                game.getBall().setSpeedStart(ballspeedX,ballspeedY);
+                game.getBall().StartSpeed();
                 labController.getGame().getPlayer1().setName(String.valueOf(player1name.getText()));
                 System.out.println(player1name.getText());
                 labController.getGame().getPlayer2().setName(String.valueOf(player2name.getText()));
