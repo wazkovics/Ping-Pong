@@ -111,7 +111,7 @@ public class Ball implements Resizable{
     }
 
     public void resetBall(){
-        posX = 250;
-        posY = 120;
+        posX = 300;
+        posY = 320;
     }
 }

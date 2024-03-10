@@ -180,6 +180,7 @@ public class MenuListener {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
+                newGame();
                 game.getBall().StartSpeed();
                 labController.getGame().getPlayer1().setName(String.valueOf(player1name.getText()));
                 System.out.println(player1name.getText());
@@ -188,8 +189,6 @@ public class MenuListener {
                 labController.getGame().getPlayer2().getRacket().setSize(paddlelength.getValue());
                 labController.getGame().getPlayer1().getRacket().setThickness(paddlewidth.getValue());
                 labController.getGame().getPlayer2().getRacket().setThickness(paddlewidth.getValue());
-//                nameandscores.setPlayer1name(player1name.getText());
-//                nameandscores.setPlayer2name(player2name.getText());
                 canvas.drawGame(labController.getGame());
 
             }

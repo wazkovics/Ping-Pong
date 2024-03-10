@@ -10,6 +10,7 @@ public class BallManager implements Runnable{
     @Override
     public void run() {
         Ball ball = game.getBall();
+        Player winner = null;
         int counter=0;
         boolean gameend = false;
         while(true)
@@ -32,6 +33,12 @@ public class BallManager implements Runnable{
                 }
                 game.getPlayer2().incrementScore();
                 ball.resetBall();
+                canvas.drawGoal(game.getPlayer2());
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 canvas.drawGame(game);
 //player 2 has scored, add code here
             }
@@ -43,6 +50,12 @@ public class BallManager implements Runnable{
                 }
                 game.getPlayer1().incrementScore();
                 ball.resetBall();
+                canvas.drawGoal(game.getPlayer1());
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 canvas.drawGame(game);
 //player 1 has scored, add code here
             }
@@ -61,14 +74,21 @@ public class BallManager implements Runnable{
                 System.out.println(game.getPlayer1().getName()+ " has won");
                 game.getBall().setSpeedStop();
                 gameend = true;
+                winner = game.getPlayer1();
             }
             if (game.getGameendingscr() == game.getPlayer2().getScore() && !gameend){
                 System.out.println(game.getPlayer2().getName()+ " has won");
                 game.getBall().setSpeedStop();
                 gameend = true;
+                winner = game.getPlayer2();
+
             }
-// CODE to CHECK BOUNCING WITH RACKET
-            canvas.drawGame(game);
+            if(gameend){
+                canvas.drawWin(winner);
+            }else {
+                canvas.drawGame(game);
+            }
+
 
 
 

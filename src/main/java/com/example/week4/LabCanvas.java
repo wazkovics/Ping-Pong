@@ -6,13 +6,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class LabCanvas extends Canvas {
+
+    private GraphicsContext gc;
+    private Game game;
     public LabCanvas(double width, double height) {
         super(width, height);
     }
 
     public void drawGame(Game game) {
+        this.game = game;
         resetSize(game);
-        GraphicsContext gc = this.getGraphicsContext2D();
+        gc = this.getGraphicsContext2D();
         drawBackground(gc);
         drawBall(gc, game.getBall());
         drawRacket(gc, game.getPlayer1().getRacket());
@@ -47,6 +51,22 @@ public class LabCanvas extends Canvas {
         gc.setFont(new Font(30));
         String nameandscore = player.getName()+ " " + player.getScore();
         gc.strokeText(nameandscore, player.getNamex(), player.getNamey());
+    }
+
+    public void drawGoal(Player player){
+        gc.setFill(Color.GREEN);
+        gc.setStroke(Color.GREEN);
+        gc.setFont(new Font(30));
+        String score = player.getName()+ " "+"has scored!";
+        gc.strokeText(score,game.getDimensionX()/4,game.getDimensionY()/2);
+    }
+
+    public void drawWin(Player player){
+        gc.setFill(Color.GREEN);
+        gc.setStroke(Color.GREEN);
+        gc.setFont(new Font(30));
+        String score = player.getName()+ " "+"has WON!";
+        gc.strokeText(score,game.getDimensionX()/4,game.getDimensionY()/2);
     }
 
 }
