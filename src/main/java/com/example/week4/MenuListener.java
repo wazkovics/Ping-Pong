@@ -17,7 +17,12 @@ public class MenuListener {
 
     private LabCanvas canvas;
 
-    private GameMenu menu;
+    /**
+     * Create a menu listener object
+     * @param game The game object which is being used for the game
+     * @param controller The controller object which is being used for the game
+     * @param labCanvas The canvas which is being used to draw the game
+     */
 
     public MenuListener(Game game,LabController controller, LabCanvas labCanvas)
     {
@@ -25,10 +30,18 @@ public class MenuListener {
         this.labController = controller;
         this.canvas = labCanvas;
     }
+
+    /**
+     * Exit from the application
+     */
     public void setExit() {
         System.out.println("EXIT");
         Platform.exit();
     }
+
+    /**
+     * Display the About popup
+     */
     public void setAbout() {
         System.out.println("ABOUT");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -39,6 +52,9 @@ public class MenuListener {
         });
     }
 
+    /**
+     * Run a new game
+     */
     public void newGame(){
         game.getBall().resetBall();
         game.getBall().StartSpeed();
@@ -51,6 +67,9 @@ public class MenuListener {
 //        System.out.println("Reset");
 //    }
 
+    /**
+     * Open the settings window
+     */
     public void setAllSettings(){
         game.getBall().setSpeedStop();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -75,6 +94,10 @@ public class MenuListener {
         HBox ballspeedHBOX = new HBox(ballspeedlabel,ballspeedin,ballspeedup,ballspeeddown);
 
         ballspeedup.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Increase the ball speed
+             * @param actionEvent
+             */
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(labController.getGame().getBall().getSpeed() < 5){
@@ -85,6 +108,10 @@ public class MenuListener {
         });
 
         ballspeeddown.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Decrease the ball speed
+             * @param actionEvent
+             */
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(labController.getGame().getBall().getSpeed() > 1){
@@ -123,6 +150,10 @@ public class MenuListener {
         HBox gameenedingHBOX = new HBox(gameendingscrlabel,gameendingscr,scrup,scrdown);
 
         scrup.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Increase the game ending score
+             * @param actionEvent
+             */
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(labController.getGame().getGameendingscr() < 6){
@@ -133,6 +164,10 @@ public class MenuListener {
         });
 
         scrdown.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Decrease the game ending score
+             * @param actionEvent
+             */
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(labController.getGame().getGameendingscr() > 1){
@@ -152,6 +187,10 @@ public class MenuListener {
         HBox difficultyHBOX = new HBox(difficultylabel,difficultyfield,difficultyup,difficultydown);
 
         difficultyup.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Increase the game difficulty
+             * @param actionEvent
+             */
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(labController.getGame().getGamedifficulty() < 3){
@@ -162,6 +201,10 @@ public class MenuListener {
         });
 
         difficultydown.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Decrease the game difficulty
+             * @param actionEvent
+             */
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(labController.getGame().getGamedifficulty() > 1){
