@@ -3,10 +3,20 @@ package com.example.week4;
 public class BallManager implements Runnable{
     private Game game;
     private LabCanvas canvas;
+
+    /**
+     * Create a Ball manager object ,which will manager the interactions between the ball and its environment
+     * @param c The game object for which to manage the ball for
+     * @param canvas The canvas on which the ball is drawn
+     */
     public BallManager(Game c, LabCanvas canvas) {
         this.game=c;
         this.canvas=canvas;
     }
+
+    /**
+     * Starts the ball movement and checks its interactions with its surroundings like the paddles and the top/bottom of the game window
+     */
     @Override
     public void run() {
         Ball ball = game.getBall();
