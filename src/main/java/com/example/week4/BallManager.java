@@ -71,13 +71,13 @@ public class BallManager implements Runnable{
                 ball.bounceX();
             }
             if (game.getGameendingscr() == game.getPlayer1().getScore() && !gameend){
-                System.out.println(game.getPlayer1().getName()+ " has won");
+
                 game.getBall().setSpeedStop();
                 gameend = true;
                 winner = game.getPlayer1();
             }
             if (game.getGameendingscr() == game.getPlayer2().getScore() && !gameend){
-                System.out.println(game.getPlayer2().getName()+ " has won");
+
                 game.getBall().setSpeedStop();
                 gameend = true;
                 winner = game.getPlayer2();
