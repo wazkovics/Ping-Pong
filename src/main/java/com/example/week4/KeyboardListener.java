@@ -7,6 +7,12 @@ import javafx.scene.input.KeyEvent;
 public class KeyboardListener implements EventHandler<KeyEvent> {
     private Game game;
     private LabCanvas canvas;
+
+    /**
+     * Create an object of the KeyBoard Listener class
+     * @param game2 Game object being used by the game
+     * @param canvas The canvas that is being used by the game
+     */
     public KeyboardListener(Game game2, LabCanvas canvas) {
         this.game =game2;
         this.canvas =canvas;
