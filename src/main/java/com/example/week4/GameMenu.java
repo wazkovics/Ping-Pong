@@ -21,7 +21,10 @@ public class GameMenu {
 
     private MenuListener menuListener;
 
-
+    /**
+     * Create a game menu object with a listener
+     * @param listener The menu listener which listens for interactions between the menu and the user
+     */
     public GameMenu(MenuListener listener){
         this.menuListener = listener;
 
@@ -32,6 +35,9 @@ public class GameMenu {
 
     }
 
+    /**
+     * Handles the interactions between the user and the game menu
+     */
     private void handleClicking(){
         filemenuitem1.setOnAction(e->menuListener.newGame());
         filemenuitem2.setOnAction(e->menuListener.setExit());
