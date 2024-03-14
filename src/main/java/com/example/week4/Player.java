@@ -11,12 +11,10 @@ public class Player implements Resizable {
 
     private int score;
 
-    /**
-     * Creates a new player object which also creates a racket for the player
-     */
-    public Player(){
-        racket = new Racket();
-    }
+
+//    public Player(){
+//        racket = new Racket();
+//    }
 
     /**
      * Creates a new player object with a new racket object
