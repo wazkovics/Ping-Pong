@@ -12,7 +12,7 @@ public class Main extends Application {
 
     private LabCanvas canvas;
 
-    private final LabController labController = new LabController();
+    private final LabController labController = new LabController(new Game());
     @Override
     public void start(Stage primaryStage) {
 
