@@ -62,6 +62,23 @@ public class MenuListener {
         game.getPlayer2().resetScore();
     }
 
+    /**
+     * Pause and unpause the game
+     */
+    public void playPause() {
+        game.getBall().setSpeedStop();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Paused");
+        alert.setHeaderText("The game has been paused, press ok to unpause");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                game.getBall().StartSpeed();
+            }
+        });
+
+    }
+
 //    public void resetBall(){
 //        canvas.drawGame(labController.getGame());
 //        System.out.println("Reset");
@@ -237,6 +254,7 @@ public class MenuListener {
             }
         });
     }
+
 
 
 }

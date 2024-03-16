@@ -8,9 +8,11 @@ import javafx.scene.layout.HBox;
 
 public class GameMenu {
     public MenuBar menubar = new MenuBar();
-    private Menu file = new Menu("File");
+    private Menu file = new Menu("Game");
     private MenuItem filemenuitem1 = new MenuItem("New Game");
-    private MenuItem filemenuitem2 = new MenuItem("Exit");
+
+    private MenuItem filemenuitem2 = new MenuItem("Play/Pause game");
+    private MenuItem filemenuitem3 = new MenuItem("Exit");
     private Menu settings = new Menu("Settings");
 
 //    private MenuItem resetball = new MenuItem("Reset Ball");
@@ -28,7 +30,7 @@ public class GameMenu {
     public GameMenu(MenuListener listener){
         this.menuListener = listener;
 
-        file.getItems().addAll(filemenuitem1,filemenuitem2);
+        file.getItems().addAll(filemenuitem1,filemenuitem2,filemenuitem3);
         settings.getItems().addAll(allsettings);
         menubar.getMenus().addAll(file,settings,help,about);
         handleClicking();
@@ -40,7 +42,8 @@ public class GameMenu {
      */
     private void handleClicking(){
         filemenuitem1.setOnAction(e->menuListener.newGame());
-        filemenuitem2.setOnAction(e->menuListener.setExit());
+        filemenuitem2.setOnAction(e-> menuListener.playPause());
+        filemenuitem3.setOnAction(e->menuListener.setExit());
         about.setOnAction(e->menuListener.setAbout());
         allsettings.setOnAction(e->menuListener.setAllSettings());
 //        resetball.setOnAction(e -> menuListener.resetBall());
