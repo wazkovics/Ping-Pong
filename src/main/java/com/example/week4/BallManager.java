@@ -1,17 +1,19 @@
 package com.example.week4;
 
 public class BallManager implements Runnable{
-    private Game game;
-    private LabCanvas canvas;
+    private final Game game;
+    private final LabCanvas canvas;
+    private final LabController controller;
 
     /**
      * Create a Ball manager object ,which will manager the interactions between the ball and its environment
      * @param c The game object for which to manage the ball for
      * @param canvas The canvas on which the ball is drawn
      */
-    public BallManager(Game c, LabCanvas canvas) {
+    public BallManager(Game c, LabCanvas canvas,LabController labController) {
         this.game=c;
         this.canvas=canvas;
+        this.controller = labController;
     }
 
     /**
@@ -73,11 +75,17 @@ public class BallManager implements Runnable{
                 ball.bounceTopOrBottom();
             }
             //player1 racket bouncing
-            if ((game.getPlayer1().getRacket().getPosX()+game.getPlayer1().getRacket().getThickness() >= ball.getPosX())&&game.getPlayer1().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer1().getRacket().getPosY()+game.getPlayer1().getRacket().getSize()){
+//            if ((game.getPlayer1().getRacket().getPosX()+game.getPlayer1().getRacket().getThickness() >= ball.getPosX())&&game.getPlayer1().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer1().getRacket().getPosY()+game.getPlayer1().getRacket().getSize()){
+//                ball.bounceX();
+//            }
+            if(controller.player1bounce()){
                 ball.bounceX();
             }
             //player 2 racket bouncing not working yet
-            if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX()+ ball.getRadius()/2)&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
+//            if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX()+ ball.getRadius()/2)&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
+//                ball.bounceX();
+//            }
+            if (controller.player2bounce()){
                 ball.bounceX();
             }
             if (game.getGameendingscr() == game.getPlayer1().getScore() && !gameend){

@@ -44,9 +44,8 @@ public class GameMenu {
         filemenuitem1.setOnAction(e->menuListener.newGame());
         filemenuitem2.setOnAction(e-> menuListener.playPause());
         filemenuitem3.setOnAction(e->menuListener.setExit());
-        about.setOnAction(e->menuListener.setAbout());
+        about.setOnAction(e-> menuListener.setAbout());
         allsettings.setOnAction(e->menuListener.setAllSettings());
-//        resetball.setOnAction(e -> menuListener.resetBall());
     }
 
 

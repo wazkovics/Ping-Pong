@@ -48,7 +48,7 @@ public class MenuListener {
         alert.setTitle("Super Ping pong");
         alert.setHeaderText("Made in Cork");
         alert.setContentText("All rights resereved");
-        alert.showAndWait().ifPresent((btnType) -> {
+        alert.showAndWait().ifPresent(response -> {
         });
     }
 
