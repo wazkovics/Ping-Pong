@@ -31,8 +31,8 @@ public class Game implements Resizable {
         player1 = new Player(dimensionY);
         player2 = new Player(dimensionX,dimensionY);
         ball = new Ball();
-        gameendingscr = 2;
-        gamedifficulty = 1;
+        gameendingscr = 4;
+        gamedifficulty = 2;
     }
 
     //Getters

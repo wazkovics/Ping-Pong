@@ -2,10 +2,6 @@ package com.example.week4;
 
 import javafx.scene.image.Image;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
-
 public class Ball implements Resizable{
 
     private String imagepath = "/images/cage1.png";
@@ -98,7 +94,7 @@ public class Ball implements Resizable{
      * Increment the speed by 1 as long as its less than 5
      */
     public void setSpeedup() {
-        if(speed <5){
+        if(speed <3){
             this.speed++;
         }
     }
@@ -115,7 +111,7 @@ public class Ball implements Resizable{
     /**
      * Start the ball movement
      */
-    public void StartSpeed(){
+    public void startSpeed(){
         this.speedX = speed;
         this.speedY = speed;
     }

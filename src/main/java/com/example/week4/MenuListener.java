@@ -6,9 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Window;
-
-import java.util.Optional;
 
 public class MenuListener {
     private Game game;
@@ -57,7 +54,7 @@ public class MenuListener {
      */
     public void newGame(){
         game.getBall().resetBall();
-        game.getBall().StartSpeed();
+        game.getBall().startSpeed();
         game.getPlayer1().resetScore();
         game.getPlayer2().resetScore();
     }
@@ -73,7 +70,7 @@ public class MenuListener {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                game.getBall().StartSpeed();
+                game.getBall().startSpeed();
             }
         });
 
@@ -241,7 +238,7 @@ public class MenuListener {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 newGame();
-                game.getBall().StartSpeed();
+                game.getBall().startSpeed();
                 labController.getGame().getPlayer1().setName(String.valueOf(player1name.getText()));
                 System.out.println(player1name.getText());
                 labController.getGame().getPlayer2().setName(String.valueOf(player2name.getText()));

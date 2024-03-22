@@ -24,6 +24,7 @@ public class BallManager implements Runnable{
         Ball ball = game.getBall();
         Player winner = null;
         int counter=0;
+        int bouncecounter = 0;
         boolean gameend = false;
         while(true)
         {
@@ -39,9 +40,10 @@ public class BallManager implements Runnable{
             }
             if (ball.getPosX()<5)
             {
+                bouncecounter = 0;
                 if (game.getGamedifficulty()>1){
                     ball.setSpeedup();
-                    ball.StartSpeed();
+                    ball.startSpeed();
                 }
                 game.getPlayer2().incrementScore();
                 ball.resetBall();
@@ -56,9 +58,10 @@ public class BallManager implements Runnable{
             }
             if (ball.getPosX()>game.getDimensionX()-ball.getRadius())
             {
+                bouncecounter = 0;
                 if (game.getGamedifficulty()>1){
                     ball.setSpeedup();
-                    ball.StartSpeed();
+                    ball.startSpeed();
                 }
                 game.getPlayer1().incrementScore();
                 ball.resetBall();
@@ -73,6 +76,7 @@ public class BallManager implements Runnable{
             }
             if (ball.getPosY() >= game.getDimensionY() - ball.getRadius() || ball.getPosY() <= ball.getRadius()){
                 ball.bounceTopOrBottom();
+                bouncecounter++;
             }
             //player1 racket bouncing
 //            if ((game.getPlayer1().getRacket().getPosX()+game.getPlayer1().getRacket().getThickness() >= ball.getPosX())&&game.getPlayer1().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer1().getRacket().getPosY()+game.getPlayer1().getRacket().getSize()){
@@ -80,6 +84,7 @@ public class BallManager implements Runnable{
 //            }
             if(controller.player1bounce()){
                 ball.bounceX();
+                bouncecounter++;
             }
             //player 2 racket bouncing not working yet
 //            if ((game.getPlayer2().getRacket().getPosX() <= ball.getPosX()+ ball.getRadius()/2)&&game.getPlayer2().getRacket().getPosY()<= ball.getPosY()&& ball.getPosY() <=game.getPlayer2().getRacket().getPosY()+game.getPlayer2().getRacket().getSize()){
@@ -87,6 +92,12 @@ public class BallManager implements Runnable{
 //            }
             if (controller.player2bounce()){
                 ball.bounceX();
+                bouncecounter++;
+            }
+            if (bouncecounter > 5){
+                bouncecounter = 0;
+                ball.setSpeedup();
+                ball.startSpeed();
             }
             if (game.getGameendingscr() == game.getPlayer1().getScore() && !gameend){
 
