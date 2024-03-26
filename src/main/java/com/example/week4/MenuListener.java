@@ -54,6 +54,7 @@ public class MenuListener {
      */
     public void newGame(){
         game.getBall().resetBall();
+        game.getBall().resetSpeed();
         game.getBall().startSpeed();
         game.getPlayer1().resetScore();
         game.getPlayer2().resetScore();

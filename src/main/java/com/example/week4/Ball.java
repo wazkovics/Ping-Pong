@@ -14,10 +14,10 @@ public class Ball implements Resizable{
     private double radius;
 
 
-    private int speed = 1;
+    private int speed;
 
-    private int speedX = 1;
-    private int speedY = 1;
+    private int speedX;
+    private int speedY;
 
     /**
      * Create a new ball object with default values
@@ -27,6 +27,9 @@ public class Ball implements Resizable{
         posY = 120;
         radius = 30 ;
         cage = new Image(getClass().getResourceAsStream(imagepath));
+        speed = 1;
+        speedX = 1;
+        speedY = 1;
 
     }
 
@@ -131,14 +134,13 @@ public class Ball implements Resizable{
     public int getSpeedX(){
         return speedX;
     }
-//    public int getSpeedY(){
-//        return speedY;
-//    }
 
-//    public void setSpeedStart(int speedx,int speedy){
-//        this.speedX  = speedx;
-//        this.speedY = speedy;
-//    }
+    /**
+     * Reset the ball speed
+     */
+    public void resetSpeed(){
+        this.speed = 1;
+    }
 
     /**
      * Move the ball on the canvas

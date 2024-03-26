@@ -33,7 +33,7 @@ public class Main extends Application {
 
         canvas.drawGame(labController.getGame());
 
-        KeyboardListener keyboardListener = new KeyboardListener( labController.getGame(), canvas);
+        KeyboardListener keyboardListener = new KeyboardListener( labController.getGame(), canvas, menuListener);
         canvas.setOnKeyPressed(keyboardListener);
         canvas.setOnKeyTyped(keyboardListener);
         canvas.setFocusTraversable(true);

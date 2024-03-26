@@ -23,7 +23,7 @@ public class LabController {
 
     /**
      * Get the game object used within the game.
-     * @return
+     * @return The current game object being used
      */
     public Game getGame(){
         return game;

@@ -8,14 +8,17 @@ public class KeyboardListener implements EventHandler<KeyEvent> {
     private Game game;
     private LabCanvas canvas;
 
+    private MenuListener menuListener;
+
     /**
      * Create an object of the KeyBoard Listener class
      * @param game2 Game object being used by the game
      * @param canvas The canvas that is being used by the game
      */
-    public KeyboardListener(Game game2, LabCanvas canvas) {
+    public KeyboardListener(Game game2, LabCanvas canvas, MenuListener menuListener) {
         this.game =game2;
         this.canvas =canvas;
+        this.menuListener = menuListener;
     }
 
     /**
@@ -26,6 +29,9 @@ public class KeyboardListener implements EventHandler<KeyEvent> {
     public void handle(KeyEvent keyEvent) {
         System.out.println(keyEvent);
         KeyCode key=keyEvent.getCode();
+        if(KeyCode.SPACE.equals(key)){
+            menuListener.playPause();
+        }
         if (KeyCode.UP.equals(key))
         {
             if(game.getPlayer2().getRacket().getPosY()>0){

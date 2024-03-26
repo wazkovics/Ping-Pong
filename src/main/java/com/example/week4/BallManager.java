@@ -41,10 +41,10 @@ public class BallManager implements Runnable{
             if (ball.getPosX()<5)
             {
                 bouncecounter = 0;
-                if (game.getGamedifficulty()>1){
-                    ball.setSpeedup();
-                    ball.startSpeed();
-                }
+//                if (game.getGamedifficulty()>1){
+//                    ball.setSpeedup();
+//                    ball.startSpeed();
+//                }
                 game.getPlayer2().incrementScore();
                 ball.resetBall();
                 canvas.drawGoal(game.getPlayer2());
@@ -59,10 +59,10 @@ public class BallManager implements Runnable{
             if (ball.getPosX()>game.getDimensionX()-ball.getRadius())
             {
                 bouncecounter = 0;
-                if (game.getGamedifficulty()>1){
-                    ball.setSpeedup();
-                    ball.startSpeed();
-                }
+//                if (game.getGamedifficulty()>1){
+//                    ball.setSpeedup();
+//                    ball.startSpeed();
+//                }
                 game.getPlayer1().incrementScore();
                 ball.resetBall();
                 canvas.drawGoal(game.getPlayer1());
@@ -94,11 +94,7 @@ public class BallManager implements Runnable{
                 ball.bounceX();
                 bouncecounter++;
             }
-            if (bouncecounter > 5){
-                bouncecounter = 0;
-                ball.setSpeedup();
-                ball.startSpeed();
-            }
+
             if (game.getGameendingscr() == game.getPlayer1().getScore() && !gameend){
 
                 game.getBall().setSpeedStop();
@@ -116,6 +112,11 @@ public class BallManager implements Runnable{
                 canvas.drawWin(winner);
             }else {
                 canvas.drawGame(game);
+            }
+            if (bouncecounter > 3){
+                bouncecounter = 0;
+                ball.setSpeedup();
+                ball.startSpeed();
             }
 
 
