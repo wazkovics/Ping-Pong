@@ -1,5 +1,7 @@
 package com.example.week4;
 
+import java.io.Serializable;
+
 public class Player implements Resizable {
 
     private String name;
@@ -101,6 +103,14 @@ public class Player implements Resizable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Set the score of the player
+     * @param score The score of the player
+     */
+    public void setScore(int score){
+        this.score = score;
     }
 
     /**

@@ -1,8 +1,9 @@
 package com.example.week4;
 
 
+import java.io.*;
 
-public class Game implements Resizable {
+public class Game implements Resizable, Serializable {
 
     private double dimensionX;
 
@@ -21,6 +22,64 @@ public class Game implements Resizable {
 
 
     private int gamedifficulty;
+
+    private GameState gameState;
+
+
+    /**
+     * Save the game to a file
+     */
+    public void saveGame(){
+        gameState = GameState.getInstance();
+        //gameState.setBallradius(ball.getRadius());
+        //gameState.setPaddle1X(player1.getRacket().getPosX());
+        //gameState.setPaddle1Y(player1.getRacket().getPosY());
+        gameState.setPaddle1length(player1.getRacket().getSize());
+        gameState.setPaddle1width(player1.getRacket().getThickness());
+        //gameState.setPaddle2X(player2.getRacket().getPosX());
+        //gameState.setPaddle2Y(player2.getRacket().getPosY());
+        gameState.setPaddle2length(player2.getRacket().getSize());
+        gameState.setPaddle2width(player2.getRacket().getThickness());
+        gameState.setScorePlayer1(player1.getScore());
+        gameState.setScorePlayer2(player2.getScore());
+        gameState.setEndgamescore(gameendingscr);
+        gameState.setGamedifficulty(gamedifficulty);
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream("Saved_game.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(gameState);
+            out.close();
+            fileOut.close();
+            System.out.println("Game state saved successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadGame(){
+        try {
+            FileInputStream fileIn = new FileInputStream("Saved_game.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            gameState = (GameState) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("Game state loaded successfully.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        player1.getRacket().setSize(gameState.getPaddle1length());
+        player1.getRacket().setThickness(gameState.getPaddle1width());
+        player2.getRacket().setSize(gameState.getPaddle2length());
+        player2.getRacket().setThickness(gameState.getPaddle2width());
+        player1.setScore(gameState.getScorePlayer1());
+        player2.setScore(gameState.getScorePlayer2());
+        gameendingscr = gameState.getEndgamescore();
+        gamedifficulty = gameState.getGamedifficulty();
+        ball.resetBall();
+
+    }
 
     /**
      * Creates a game object with 2 new players and a ball, sets the default window size

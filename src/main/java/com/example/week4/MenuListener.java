@@ -77,10 +77,6 @@ public class MenuListener {
 
     }
 
-//    public void resetBall(){
-//        canvas.drawGame(labController.getGame());
-//        System.out.println("Reset");
-//    }
 
     /**
      * Open the settings window
@@ -253,6 +249,19 @@ public class MenuListener {
         });
     }
 
+    /**
+     * Save the game
+     */
+    public void saveGame(){
+        game.saveGame();
+    }
 
+    /**
+     * Load the game
+     */
 
+    public void loadGame(){
+        game.loadGame();
+        canvas.drawGame(game);
+    }
 }

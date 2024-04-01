@@ -3,7 +3,9 @@ package com.example.week4;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class Racket implements Resizable{
+import java.io.Serializable;
+
+public class Racket implements Resizable {
 
     private double posX;
     private double posY;

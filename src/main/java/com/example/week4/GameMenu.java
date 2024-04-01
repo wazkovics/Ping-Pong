@@ -12,7 +12,11 @@ public class GameMenu {
     private MenuItem filemenuitem1 = new MenuItem("New Game");
 
     private MenuItem filemenuitem2 = new MenuItem("Play/Pause game");
-    private MenuItem filemenuitem3 = new MenuItem("Exit");
+
+    private MenuItem filemenuitem3 = new MenuItem("Save Game");
+
+    private MenuItem filemenuitem4 = new MenuItem("Load Saved Game");
+    private MenuItem filemenuitem5 = new MenuItem("Exit");
     private Menu settings = new Menu("Settings");
 
 //    private MenuItem resetball = new MenuItem("Reset Ball");
@@ -30,7 +34,7 @@ public class GameMenu {
     public GameMenu(MenuListener listener){
         this.menuListener = listener;
 
-        file.getItems().addAll(filemenuitem1,filemenuitem2,filemenuitem3);
+        file.getItems().addAll(filemenuitem1,filemenuitem2,filemenuitem3,filemenuitem4,filemenuitem5);
         settings.getItems().addAll(allsettings);
         menubar.getMenus().addAll(file,settings,help,about);
         handleClicking();
@@ -43,7 +47,9 @@ public class GameMenu {
     private void handleClicking(){
         filemenuitem1.setOnAction(e->menuListener.newGame());
         filemenuitem2.setOnAction(e-> menuListener.playPause());
-        filemenuitem3.setOnAction(e->menuListener.setExit());
+        filemenuitem3.setOnAction(e->menuListener.saveGame());
+        filemenuitem4.setOnAction(e->menuListener.loadGame());
+        filemenuitem5.setOnAction(e->menuListener.setExit());
         about.setOnAction(e-> menuListener.setAbout());
         allsettings.setOnAction(e->menuListener.setAllSettings());
     }
