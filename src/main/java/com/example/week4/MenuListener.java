@@ -254,6 +254,16 @@ public class MenuListener {
      */
     public void saveGame(){
         game.saveGame();
+        game.getBall().setSpeedStop();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Paused");
+        alert.setHeaderText("The game has been paused, in order to save the game");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                game.getBall().startSpeed();
+            }
+        });
     }
 
     /**
@@ -262,6 +272,16 @@ public class MenuListener {
 
     public void loadGame(){
         game.loadGame();
+        game.getBall().setSpeedStop();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Paused");
+        alert.setHeaderText("The game has been paused, in order to load the game");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                game.getBall().startSpeed();
+            }
+        });
         canvas.drawGame(game);
     }
 }

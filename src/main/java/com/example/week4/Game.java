@@ -57,6 +57,9 @@ public class Game implements Resizable, Serializable {
         }
     }
 
+    /**
+     * Load the game from a save file
+     */
     public void loadGame(){
         try {
             FileInputStream fileIn = new FileInputStream("Saved_game.txt");
@@ -66,7 +69,8 @@ public class Game implements Resizable, Serializable {
             fileIn.close();
             System.out.println("Game state loaded successfully.");
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("The save file couldn't be found, this is because it has not been saved before.\nSave first then try reloading again.");
         }
 
         player1.getRacket().setSize(gameState.getPaddle1length());
