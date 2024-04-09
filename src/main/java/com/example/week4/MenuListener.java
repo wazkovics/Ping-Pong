@@ -250,7 +250,7 @@ public class MenuListener {
     }
 
     /**
-     * Save the game
+     * Serialise the game
      */
     public void saveGame(){
         game.saveGame();
@@ -267,7 +267,7 @@ public class MenuListener {
     }
 
     /**
-     * Load the game
+     * Deserialize the game
      */
 
     public void loadGame(){
