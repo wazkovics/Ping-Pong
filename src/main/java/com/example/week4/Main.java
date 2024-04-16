@@ -1,10 +1,11 @@
 package com.example.week4;
 
+import com.example.week4.DatabaseManager.DatabaseManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+import java.sql.SQLException;
 
 
 public class Main extends Application {
@@ -15,6 +16,8 @@ public class Main extends Application {
     private final LabController labController = new LabController(new Game());
     @Override
     public void start(Stage primaryStage) {
+
+
 
         BorderPane top = new BorderPane();
         canvas = new LabCanvas(600,450);
@@ -33,7 +36,7 @@ public class Main extends Application {
 
         canvas.drawGame(labController.getGame());
 
-        KeyboardListenercopy keyboardListener = new KeyboardListenercopy( labController.getGame(), canvas, menuListener);
+        KeyboardListener keyboardListener = new KeyboardListener( labController.getGame(), canvas, menuListener);
         canvas.setOnKeyPressed(keyboardListener);
         canvas.setOnKeyTyped(keyboardListener);
         canvas.setFocusTraversable(true);
@@ -69,7 +72,16 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch();
+        //code testing
+        // example of JDBC and builder
+        DatabaseManager dbManager= new DatabaseManager();
+        try {
+            System.out.println(dbManager.getGame("Australian Open"));
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+//        launch();
     }
 
 

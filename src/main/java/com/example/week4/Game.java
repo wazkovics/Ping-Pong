@@ -204,6 +204,14 @@ public class Game implements Resizable, Serializable {
     }
 
     /**
+     * Set the game ending score
+     * @param gameendingscr The score which ends the game
+     */
+    public void setGameendingscr(int gameendingscr){
+        this.gameendingscr = gameendingscr;
+    }
+
+    /**
      * Increment the game difficulty by one
      */
     public void setGamedifficultyUp() {
