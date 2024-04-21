@@ -296,7 +296,13 @@ public class MenuListener {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Paused");
         alert.setHeaderText("The game has been paused");
-        String gamename = "GAME";
+        Label saveGameName = new Label("Save Game Name");
+        TextField saveGameName2 = new TextField("Save");
+        saveGameName2.setMaxWidth(150);
+        VBox saveGame = new VBox(saveGameName,saveGameName2);
+
+
+        alert.getDialogPane().setContent(saveGame);
 
         //Over here ask what name to give it
         //Then save it to the database
@@ -305,11 +311,12 @@ public class MenuListener {
             if (response == ButtonType.OK) {
                 DatabaseManager dbManager= new DatabaseManager();
                 try {
-                    dbManager.saveGame(gamename,game.getPlayer1().getName(),game.getPlayer2().getName(),game.getPlayer1().getScore(),game.getPlayer2().getScore(),game.getGameendingscr());
+                    dbManager.saveGame(saveGameName2.getText(),game.getPlayer1().getName(),game.getPlayer2().getName(),game.getPlayer1().getScore(),game.getPlayer2().getScore(),game.getGameendingscr());
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
                 game.getBall().startSpeed();
+                System.out.println("Save game "+saveGameName2.getText()+"created!");
             }
         });
 
@@ -319,26 +326,43 @@ public class MenuListener {
      * Load Game from the database
      */
     public void loadGamefromDatatbase() {
+        game.getBall().setSpeedStop();
+        DatabaseManager dbManager= new DatabaseManager();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Paused");
         alert.setHeaderText("The game has been paused");
 
+        Label loadGameName = new Label("Save Game Name");
+        TextField loadGameName2 = new TextField("Name of the save file to load");
+        loadGameName2.setMaxWidth(300);
+        VBox loadGame = new VBox(loadGameName,loadGameName2);
+
+        try {
+            dbManager.printGameNames();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        alert.getDialogPane().setContent(loadGame);
         //Over here ask which game should be loaded
         //Print which ones exist, then the user can type it in themselves
 
         alert.showAndWait().ifPresent(response -> {
+            Game loaded;
             if (response == ButtonType.OK) {
+                try {
+                    loaded = dbManager.getGame(loadGameName2.getText());
+                    game.getPlayer1().setScore(loaded.getPlayer1().getScore());
+                    game.getPlayer1().setName(loaded.getPlayer1().getName());
+                    game.getPlayer2().setScore(loaded.getPlayer2().getScore());
+                    game.getPlayer2().setName(loaded.getPlayer2().getName());
+                    game.setGameendingscr(loaded.getGameendingscr());
+                } catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
+                }
                 game.getBall().startSpeed();
+                canvas.drawGame(game);
             }
         });
-
-        //code testing
-        // example of JDBC and builder
-        DatabaseManager dbManager= new DatabaseManager();
-        try {
-            System.out.println(dbManager.getGame("Australian Open"));
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -6,6 +6,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class DatabaseConnector {
     private static Connection connection;
+
+    /**
+     * Return the connection object
+     * @return The connection object which connects to the database
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static Connection getConnection() throws SQLException, ClassNotFoundException
     {
         if (connection==null || connection.isClosed())
@@ -14,6 +21,12 @@ public class DatabaseConnector {
         }
         return connection;
     }
+
+    /**
+     * Create a connection to the database
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private static void createConnection() throws SQLException, ClassNotFoundException
     {
         Class.forName("com.mysql.jdbc.Driver");
