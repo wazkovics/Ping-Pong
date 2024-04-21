@@ -1,5 +1,7 @@
-package com.example.week4;
+package com.example.week4.Listener;
 
+import com.example.week4.Game;
+import com.example.week4.LabCanvas;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;

@@ -9,4 +9,6 @@ module com.example.week4 {
     exports com.example.week4;
     exports com.example.week4.DatabaseManager;
     opens com.example.week4.DatabaseManager to javafx.fxml;
+    exports com.example.week4.Listener;
+    opens com.example.week4.Listener to javafx.fxml;
 }
