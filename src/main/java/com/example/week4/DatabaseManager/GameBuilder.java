@@ -10,18 +10,19 @@ public class GameBuilder {
     private String name;
     private int target;
     public Game build() {
-        Game game = new Game();
+//        Game game = new Game();
 //        Player player1= new Player();
 //        Player player2= new Player();
-        game.getPlayer1().setName(player1Name);
-        game.getPlayer2().setName(player2Name);
-        game.getPlayer1().setScore(player1Score);
-        game.getPlayer2().setScore(player2Score);
-        game.setGameendingscr(target);
+//        game.getPlayer1().setName(player1Name);
+//        game.getPlayer2().setName(player2Name);
+//        game.getPlayer1().setScore(player1Score);
+//        game.getPlayer2().setScore(player2Score);
+//        game.setGameendingscr(target);
 //        game.setName(name);
 //        game.setPlayer1(player1);
 //        game.setPlayer2(player2);
-        return game;
+//        return game;
+        return null;
     }
     public GameBuilder withName(String name) {
         this.name=name;

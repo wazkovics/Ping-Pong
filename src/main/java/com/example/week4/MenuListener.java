@@ -296,6 +296,7 @@ public class MenuListener {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Paused");
         alert.setHeaderText("The game has been paused");
+        String gamename = "GAME";
 
         //Over here ask what name to give it
         //Then save it to the database
@@ -304,7 +305,7 @@ public class MenuListener {
             if (response == ButtonType.OK) {
                 DatabaseManager dbManager= new DatabaseManager();
                 try {
-                    System.out.println(dbManager.getGame("Australian Open"));
+                    dbManager.saveGame(gamename,game.getPlayer1().getName(),game.getPlayer2().getName(),game.getPlayer1().getScore(),game.getPlayer2().getScore(),game.getGameendingscr());
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }

@@ -1,7 +1,10 @@
 package com.example.week4;
 
 
+import com.example.week4.DatabaseManager.DatabaseManager;
+
 import java.io.*;
+import java.sql.SQLException;
 
 public class Game implements Resizable, Serializable {
 
