@@ -72,16 +72,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        //code testing
-        // example of JDBC and builder
-        DatabaseManager dbManager= new DatabaseManager();
-        try {
-            System.out.println(dbManager.getGame("Australian Open"));
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-
-//        launch();
+        launch();
     }
 
 

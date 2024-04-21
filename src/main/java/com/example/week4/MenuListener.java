@@ -1,11 +1,14 @@
 package com.example.week4;
 
+import com.example.week4.DatabaseManager.DatabaseManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.sql.SQLException;
 
 public class MenuListener {
     private Game game;
@@ -272,7 +275,7 @@ public class MenuListener {
 
     public void loadGame(){
         game.loadGame();
-        game.getBall().setSpeedStop();
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Paused");
         alert.setHeaderText("The game has been paused, in order to load the game");
@@ -283,5 +286,58 @@ public class MenuListener {
             }
         });
         canvas.drawGame(game);
+    }
+
+    /**
+     * Save game to the database
+     */
+    public void saveGametoDatabase() {
+        game.getBall().setSpeedStop();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Paused");
+        alert.setHeaderText("The game has been paused");
+
+        //Over here ask what name to give it
+        //Then save it to the database
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                DatabaseManager dbManager= new DatabaseManager();
+                try {
+                    System.out.println(dbManager.getGame("Australian Open"));
+                } catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
+                }
+                game.getBall().startSpeed();
+            }
+        });
+
+    }
+
+    /**
+     * Load Game from the database
+     */
+    public void loadGamefromDatatbase() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Paused");
+        alert.setHeaderText("The game has been paused");
+
+        //Over here ask which game should be loaded
+        //Print which ones exist, then the user can type it in themselves
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                game.getBall().startSpeed();
+            }
+        });
+
+        //code testing
+        // example of JDBC and builder
+        DatabaseManager dbManager= new DatabaseManager();
+        try {
+            System.out.println(dbManager.getGame("Australian Open"));
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
