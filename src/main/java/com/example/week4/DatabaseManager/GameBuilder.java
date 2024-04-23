@@ -1,4 +1,7 @@
-package com.example.week4;
+package com.example.week4.DatabaseManager;
+
+import com.example.week4.Game;
+import com.example.week4.Player;
 
 public class GameBuilder {
     private String player1Name;

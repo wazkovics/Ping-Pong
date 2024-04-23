@@ -1,7 +1,6 @@
 package com.example.week4.DatabaseManager;
 
 import com.example.week4.Game;
-import com.example.week4.GameBuilder;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
