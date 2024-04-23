@@ -34,13 +34,8 @@ public class Game implements Resizable, Serializable {
      */
     public void saveGame(){
         gameState = GameState.getInstance();
-        //gameState.setBallradius(ball.getRadius());
-        //gameState.setPaddle1X(player1.getRacket().getPosX());
-        //gameState.setPaddle1Y(player1.getRacket().getPosY());
         gameState.setPaddle1length(player1.getRacket().getSize());
         gameState.setPaddle1width(player1.getRacket().getThickness());
-        //gameState.setPaddle2X(player2.getRacket().getPosX());
-        //gameState.setPaddle2Y(player2.getRacket().getPosY());
         gameState.setPaddle2length(player2.getRacket().getSize());
         gameState.setPaddle2width(player2.getRacket().getThickness());
         gameState.setScorePlayer1(player1.getScore());
@@ -71,7 +66,7 @@ public class Game implements Resizable, Serializable {
             in.close();
             fileIn.close();
             System.out.println("Game state loaded successfully.");
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException | NullPointerException e) {
             //e.printStackTrace();
             System.out.println("The save file couldn't be found, this is because it has not been saved before.\nSave first then try reloading again.");
         }
@@ -163,13 +158,22 @@ public class Game implements Resizable, Serializable {
 
 
     //Setters
-//    public void setPlayer1(Player player1) {
-//        this.player1 = player1;
-//    }
-//
-//    public void setPlayer2(Player player2) {
-//        this.player2 = player2;
-//    }
+
+    /**
+     * Set the player 1 object to another player object
+     * @param player1 The player object which you want to set the player 1 object to
+     */
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
+
+    /**
+     * Set the player 2 object to another player object
+     * @param player2 The player object which you want to set the player 2 object to
+     */
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
 //
 //    public void setBall(Ball ball) {
 //        this.ball = ball;

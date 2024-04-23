@@ -1,6 +1,7 @@
 package com.example.week4.DatabaseManager;
 
 import com.example.week4.Game;
+import com.example.week4.GameBuilder;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,22 +23,26 @@ public class DatabaseManager {
         Statement statement = connection.createStatement();
         String sql = "select * from game where name ='"+name+"' ORDER BY id DESC LIMIT 1;";
         ResultSet rs= statement.executeQuery(sql);
-        Game load = new Game();
-
-
-
+        GameBuilder builder = new GameBuilder();
         while(rs.next())
         {
-            load.getPlayer1().setName(rs.getString("player1Name"));
-            load.getPlayer1().setScore(rs.getInt("player1Score"));
-            load.getPlayer2().setName(rs.getString("player2Name"));
-            load.getPlayer2().setScore(rs.getInt("player2Score"));
-            load.setGameendingscr(rs.getInt("target"));
+
+            builder.withPlayer1Name(rs.getString("player1Name"));
+            builder.withPlayer1Score(rs.getInt("player1Score"));
+            builder.withPlayer2Name(rs.getString("player2Name"));
+            builder.withPlayer2Score(rs.getInt("player2Score"));
+            builder.withTarget(rs.getInt("target"));
+//            load.getPlayer1().setName(rs.getString("player1Name"));
+//            load.getPlayer1().setScore(rs.getInt("player1Score"));
+//            load.getPlayer2().setName(rs.getString("player2Name"));
+//            load.getPlayer2().setScore(rs.getInt("player2Score"));
+//            load.setGameendingscr(rs.getInt("target"));
 //            //TODO
 //            //Create a new game and set the variables here
 //            return Game;
         }
-        return load;
+
+        return builder.build();
     }
 
     /**
@@ -77,7 +82,7 @@ public class DatabaseManager {
         Connection connection = DatabaseConnector.getConnection();
         Statement statement = connection.createStatement();
 
-        String sql = "INSERT INTO game (`player1Name`,`player2Name`,`player1Score`,`player2Score`,`target`,`name`) VALUES ('"+player1Name+"','"+ player2Name+"','"+player1Score+"','"+player2Score+"','"+gameEndingScore+"','"+gameName+"');";
+        String sql = "INSERT INTO game (`player1Name`,`player2Name`,`player1Score`,`player2Score`,`target`,`name`) VALUES ('"+player1Name+"','"+player2Name+"','"+player1Score+"','"+player2Score+"','"+gameEndingScore+"','"+gameName+"');";
         //System.out.println("INSERT INTO game (`player1Name`,`player2Name`,`player1Score`,`player2Score`,`target`,`name`) VALUES ('"+player1Name+"','"+ player2Name+"','"+player1Score+"','"+player2Score+"','"+gameEndingScore+"','"+gameName+"');");
         System.out.println(sql);
         int rs= statement.executeUpdate(sql);

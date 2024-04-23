@@ -14,9 +14,9 @@ public class Player implements Resizable {
     private int score;
 
 
-//    public Player(){
-//        racket = new Racket();
-//    }
+    public Player(){
+
+    }
 
     /**
      * Creates a new player object with a new racket object
@@ -117,6 +117,14 @@ public class Player implements Resizable {
      * Dynamically move the name in the X axis to fit with the window width
      * @param factor The number by which increase or decrease the X location of the name of the player on canvas
      */
+
+    /**
+     * Set the racket of a player
+     * @param racket The racket of a player
+     */
+    public void setRacket(Racket racket){
+        this.racket = racket;
+    }
     @Override
     public void resizeX(double factor) {
         namex = namex*factor;
