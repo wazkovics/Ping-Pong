@@ -4,6 +4,8 @@ import com.example.week4.Listener.BallManager;
 import com.example.week4.Listener.KeyboardListener;
 import com.example.week4.Listener.LabController;
 import com.example.week4.Listener.MenuListener;
+import com.example.week4.Tests.Heap;
+import com.example.week4.Tests.Stack;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -75,7 +77,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 //        launch();
-        Heap.main(null);
+        Heap.heapstest();
+//        Stack.stacktest();
     }
 
 
