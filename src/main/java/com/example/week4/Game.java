@@ -6,7 +6,7 @@ import com.example.week4.DatabaseManager.DatabaseManager;
 import java.io.*;
 import java.sql.SQLException;
 
-public class Game implements Resizable, Serializable {
+public class Game implements Resizable {
 
     private double dimensionX;
 
@@ -25,63 +25,6 @@ public class Game implements Resizable, Serializable {
 
 
     private int gamedifficulty;
-
-    private GameState gameState;
-
-
-    /**
-     * Save the game to a file
-     */
-    public void saveGame(){
-        gameState = GameState.getInstance();
-        gameState.setPaddle1length(player1.getRacket().getSize());
-        gameState.setPaddle1width(player1.getRacket().getThickness());
-        gameState.setPaddle2length(player2.getRacket().getSize());
-        gameState.setPaddle2width(player2.getRacket().getThickness());
-        gameState.setScorePlayer1(player1.getScore());
-        gameState.setScorePlayer2(player2.getScore());
-        gameState.setEndgamescore(gameendingscr);
-        gameState.setGamedifficulty(gamedifficulty);
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream("Saved_game.txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(gameState);
-            out.close();
-            fileOut.close();
-            System.out.println("Game state saved successfully.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Load the game from a save file
-     */
-    public void loadGame(){
-        try {
-            FileInputStream fileIn = new FileInputStream("Saved_game.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            gameState = (GameState) in.readObject();
-            in.close();
-            fileIn.close();
-            System.out.println("Game state loaded successfully.");
-        } catch (IOException | ClassNotFoundException | NullPointerException e) {
-            //e.printStackTrace();
-            System.out.println("The save file couldn't be found, this is because it has not been saved before.\nSave first then try reloading again.");
-        }
-
-        player1.getRacket().setSize(gameState.getPaddle1length());
-        player1.getRacket().setThickness(gameState.getPaddle1width());
-        player2.getRacket().setSize(gameState.getPaddle2length());
-        player2.getRacket().setThickness(gameState.getPaddle2width());
-        player1.setScore(gameState.getScorePlayer1());
-        player2.setScore(gameState.getScorePlayer2());
-        gameendingscr = gameState.getEndgamescore();
-        gamedifficulty = gameState.getGamedifficulty();
-        ball.resetBall();
-
-    }
 
     /**
      * Creates a game object with 2 new players and a ball, sets the default window size
@@ -230,6 +173,14 @@ public class Game implements Resizable, Serializable {
      */
     public void setGamedifficultyDown() {
         this.gamedifficulty--;
+    }
+
+    /**
+     * Set game diffficulty
+     * @param gamedifficulty The value to which set the game difficulty to
+     */
+    public void setGamedifficulty(int gamedifficulty){
+        this.gamedifficulty = gamedifficulty;
     }
 
 

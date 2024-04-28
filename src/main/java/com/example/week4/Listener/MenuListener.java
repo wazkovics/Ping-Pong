@@ -258,7 +258,8 @@ public class MenuListener {
      * Serialise the game
      */
     public void saveGame(){
-        game.saveGame();
+        labController.saveGame();
+//        game.saveGame();
         game.getBall().setSpeedStop();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Paused");
@@ -276,7 +277,8 @@ public class MenuListener {
      */
 
     public void loadGame(){
-        game.loadGame();
+        labController.loadGame();
+//        game.loadGame();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Paused");

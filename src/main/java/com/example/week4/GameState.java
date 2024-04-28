@@ -49,55 +49,7 @@ public class GameState implements Serializable {
         this.scorePlayer2 = scorePlayer2;
     }
 
-    // Getters and setters for the variables
-//    public double getPaddle1Y() {
-//        return paddle1Y;
-//    }
-//
-//    public void setPaddle1Y(double paddle1Y) {
-//        this.paddle1Y = paddle1Y;
-//    }
-//
-//    public double getPaddle2Y() {
-//        return paddle2Y;
-//    }
-//
-//    public void setPaddle2Y(double paddle2Y) {
-//        this.paddle2Y = paddle2Y;
-//    }
-//
-//    public double getBallX() {
-//        return ballX;
-//    }
-//
-//    public void setBallX(double ballX) {
-//        this.ballX = ballX;
-//    }
-//
-//    public double getBallY() {
-//        return ballY;
-//    }
-//
-//    public void setBallY(double ballY) {
-//        this.ballY = ballY;
-//    }
-//
-//
-//    public int getScorePlayer1() {
-//        return scorePlayer1;
-//    }
-//
-//    public void setScorePlayer1(int scorePlayer1) {
-//        this.scorePlayer1 = scorePlayer1;
-//    }
-//
-//    public int getScorePlayer2() {
-//        return scorePlayer2;
-//    }
-//
-//    public void setScorePlayer2(int scorePlayer2) {
-//        this.scorePlayer2 = scorePlayer2;
-//    }
+
 
     //Getters
     /**
@@ -376,4 +328,54 @@ public class GameState implements Serializable {
 
 
 }
+
+// Getters and setters for the variables
+//    public double getPaddle1Y() {
+//        return paddle1Y;
+//    }
+//
+//    public void setPaddle1Y(double paddle1Y) {
+//        this.paddle1Y = paddle1Y;
+//    }
+//
+//    public double getPaddle2Y() {
+//        return paddle2Y;
+//    }
+//
+//    public void setPaddle2Y(double paddle2Y) {
+//        this.paddle2Y = paddle2Y;
+//    }
+//
+//    public double getBallX() {
+//        return ballX;
+//    }
+//
+//    public void setBallX(double ballX) {
+//        this.ballX = ballX;
+//    }
+//
+//    public double getBallY() {
+//        return ballY;
+//    }
+//
+//    public void setBallY(double ballY) {
+//        this.ballY = ballY;
+//    }
+//
+//
+//    public int getScorePlayer1() {
+//        return scorePlayer1;
+//    }
+//
+//    public void setScorePlayer1(int scorePlayer1) {
+//        this.scorePlayer1 = scorePlayer1;
+//    }
+//
+//    public int getScorePlayer2() {
+//        return scorePlayer2;
+//    }
+//
+//    public void setScorePlayer2(int scorePlayer2) {
+//        this.scorePlayer2 = scorePlayer2;
+//    }
 
