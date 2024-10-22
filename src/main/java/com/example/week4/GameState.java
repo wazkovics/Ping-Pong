@@ -40,14 +40,14 @@ public class GameState implements Serializable {
         return gameState;
     }
 
-    public GameState(int paddle1X ,int paddle1Y, int paddle2X, int paddle2Y, int ballX, int ballY, int scorePlayer1, int scorePlayer2) {
-        this.paddle1Y = paddle1Y;
-        this.paddle2Y = paddle2Y;
-        this.ballX = ballX;
-        this.ballY = ballY;
-        this.scorePlayer1 = scorePlayer1;
-        this.scorePlayer2 = scorePlayer2;
-    }
+//    private GameState(int paddle1X ,int paddle1Y, int paddle2X, int paddle2Y, int ballX, int ballY, int scorePlayer1, int scorePlayer2) {
+//        this.paddle1Y = paddle1Y;
+//        this.paddle2Y = paddle2Y;
+//        this.ballX = ballX;
+//        this.ballY = ballY;
+//        this.scorePlayer1 = scorePlayer1;
+//        this.scorePlayer2 = scorePlayer2;
+//    }
 
 
 

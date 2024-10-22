@@ -74,7 +74,7 @@ public class LabController implements Serializable {
         gameState.setGamedifficulty(game.getGamedifficulty());
 
         try {
-            FileOutputStream fileOut = new FileOutputStream("Saved_game.txt");
+            FileOutputStream fileOut = new FileOutputStream("Saved_game.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(gameState);
             out.close();
@@ -90,7 +90,7 @@ public class LabController implements Serializable {
      */
     public void loadGame(){
         try {
-            FileInputStream fileIn = new FileInputStream("Saved_game.txt");
+            FileInputStream fileIn = new FileInputStream("Saved_game.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             gameState = (GameState) in.readObject();
             in.close();

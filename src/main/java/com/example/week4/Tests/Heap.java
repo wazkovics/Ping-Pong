@@ -67,15 +67,18 @@ public class Heap {
         long startTime = System.currentTimeMillis();
         List<Integer> players = new ArrayList<>();
 //        List<Player> players = new ArrayList<>();
+        //object count
         int count = 0;
         long previousTime = startTime;
         try {
             while (true) {
+                //create new objects
                 Integer player = new Integer(1);
 //                Player player = new Player();
                 players.add(player);
                 count++;
 
+                //show the progress of object creation and see how long it takes to create x amount of objects
                 if (count % 10000000 == 0) {
                     long currentTime = System.currentTimeMillis();
                     long elapsedTime = currentTime - previousTime;
